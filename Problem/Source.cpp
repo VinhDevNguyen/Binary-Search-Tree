@@ -1,3 +1,28 @@
+﻿//PROBLEM 1
+//Cài đặt cây nhị phân tìm kiếm(Binary Search Tree - BST), thực hiện thao tác thêm, duyệt và xóa.
+//INPUT:
+//Input trên mỗi dòng sẽ bao gồm 2 phần, n và x, nếu n = 1 thì người dùng phải nhập thêm x, đây sẽ là giá trị được thêm vào cây, nếu n = 2 thì node có giá trị lớn nhất trong cây sẽ bị xóa, nếu n = -1 thì ngưng các thao tác trên cây.
+//
+//OUTPUT
+//Xuất ra kết quả duyệt cây theo thứ tự Left Node Right(LNR) trên cùng một dòng sau khi thực hiện các thao tác kể trên, mỗi giá trị cách nhau bởi khoảng trắng.
+//
+//VÍ DỤ :
+//
+//INPUT
+//1 4
+//1 5
+//1 33
+//1 111
+//1 7
+//1 - 34
+//2
+//1 3
+//2
+//2
+//- 1
+//Output
+//- 34 3 4 5
+
 #include<iostream>
 using namespace std;
 
@@ -60,13 +85,14 @@ int InserNode(TREE& a, int x)
 	}
 }
 
-int MaxValue(TREE & a)
+int MaxValue(TREE & a) //Tìm giá trị lớn nhất
 {
 	if (a->pRight == NULL) return a->info;
 	else return MaxValue(a->pRight);
 }
 
-void thaythe(TREE &q, TREE &p) {
+void thaythe(TREE &q, TREE &p) 
+{
 	// tim phan tu trai nhat cua cay ben phai
 	//if(t==NULL) return;
 	if (p->pLeft != NULL) {
@@ -80,7 +106,8 @@ void thaythe(TREE &q, TREE &p) {
 
 }
 
-void delTree(TREE &t, int x) {
+void delTree(TREE &t, int x) 
+{
 	if (t == NULL) return;
 	if (t->info > x) delTree(t->pLeft, x);
 	if (t->info < x) delTree(t->pRight, x);

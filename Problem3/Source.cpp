@@ -1,27 +1,26 @@
-﻿//PROBLEM 2
-//Thực hiện thao tác thêm node và tìm bậc của node trên BST.
+﻿//PROBLEM 3
 //
+//Thực hiện thao tác thêm node và tìm mức của node trên BST.
 //INPUT:
-//
 //Dòng đầu tiên là số lượng node n, n dòng tiếp theo là giá trị của n node, node được thêm vào cây từ trên xuống dưới.
 //OUTPUT
-//Xuất ra kết quả là bậc của các node được sắp xếp theo thứ tự tăng dần của giá trị node, cách nhau bởi khoảng trắng.
+//Xuất ra kết quả là mức của các node được sắp xếp theo thứ tự tăng dần của giá trị node, cách nhau bởi khoảng trắng.
+//
 //VÍ DỤ :
 //INPUT
 //10
 //1
-//7
+//2
+//3
 //4
-//- 32
-//33
-//13
-//5
-//19
-//17
-//- 6
+//7
+//90
+//- 90
+//69
+//- 69
+//12
 //Output
-//1 0 2 1 0 2 1 0 1 1
-
+//1 2 0 1 2 3 4 7 6 5
 #include<iostream>
 using namespace std;
 
