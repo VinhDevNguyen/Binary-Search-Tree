@@ -1,88 +1,83 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-struct Node
+
+struct node
 {
 	int info;
-	Node* pLeft;
-	Node* pRight;
+	node *left;
+	node *right;
 };
+typedef node* Tree;
 
-typedef Node* TREE;
-
-Node* CreateNode(int x)
+void Insert(Tree &t, int x)
 {
-	Node* p;
-	p = new Node;
-	if (p == NULL)
+	if (t == NULL)
 	{
-		exit(1);
+		node *p = new node;
+		p->info = x;
+		p->left = p->right = NULL;
+		t = p;
 	}
 	else
 	{
-		p->info = x;
-		p->pLeft = NULL;
-		p->pRight = NULL;
-	}
-	return p;
-}
-
-void CreateTree(TREE& a)
-{
-	a = NULL;
-}
-
-int InserNode(TREE& a, int x)
-{
-	if (a == NULL)
-	{
-		a = new Node;
-		if (a == NULL)
-		{
-			return -1;
-		}
-		a->info = x;
-		a->pLeft = NULL;
-		a->pRight = NULL;
-		return 1;
-	}
-	if (x == a->info)
-	{
-		return 0;
-	}
-	if (x > a->info)
-	{
-		InserNode(a->pRight, x);
-	}
-	if (x < a->info)
-	{
-		InserNode(a->pLeft, x);
+		if (x>t->info)
+			Insert(t->right, x);
+		if (x<t->info)
+			Insert(t->left, x);
 	}
 }
 
-void xuatLNR(TREE a)
+void inputTree(Tree &t)
 {
-	if (a != NULL)
+	int x;
+	cin >> x;
+	if (x == -1) return;
+	while (x != -1)
 	{
-		xuatLNR(a->pLeft);
-		cout << a->info << " ";
-		xuatLNR(a->pRight);
+		if (x >= 1)
+			Insert(t, x);
+		cin >> x;
 	}
 }
+
+void LNR(Tree T)
+{
+	if (T != NULL)
+	{
+		LNR(T->left);
+		cout << T->info << " ";
+		LNR(T->right);
+	}
+}
+
+int check(int x)
+{
+	if (x<2) return 0;
+	for (int i = 2; i <= x / 2; i++)
+		if (x%i == 0)
+			return 0;
+	return 1;
+}
+
+
+void listPrime(Tree t)
+{
+	if (t != NULL)
+	{
+		if (check(t->info))
+			cout << t->info << " ";
+		listPrime(t->left);
+		listPrime(t->right);
+	}
+}
+
 
 int main()
 {
-	TREE a;
-	CreateTree(a);
-	int x;
+	Tree T = NULL;
+	inputTree(T);
+	LNR(T);
 
-	do
-	{
-		cin >> x;
-		if (x != -1)
-			InserNode(a, x);
-	} while (x != -1);
-	xuatLNR(a);
-	system("pause");
 	return 0;
 }
