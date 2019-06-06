@@ -97,18 +97,25 @@ void XuatBac1Node(TREE& a)
 	}
 }
 
+void NhapTree(TREE& t)
+{
+	int x;
+	cin >> x;
+	if (x == -1) return;
+	while (x != -1)
+	{
+		if (x >= 1)
+			InserNode(t, x);
+		cin >> x;
+	}
+}
+
+
 int main()
 {
 	TREE a;
 	CreateTree(a);
-	int x;
-
-	do
-	{
-		cin >> x;
-		if (x != -1)
-			InserNode(a, x);
-	} while (x != -1);
+	NhapTree(a);
 	cin >> Muc;
 	XuatBac1Node(a);
 	system("pause");
